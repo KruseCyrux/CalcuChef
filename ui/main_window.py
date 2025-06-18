@@ -19,4 +19,4 @@ def launch_main_window():
     exit_button = tk.Button(root, text="Salir", width=30, command=root.quit)
     exit_button.pack(pady=10)
 
-root.mainloop()
+    root.mainloop()
