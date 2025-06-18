@@ -30,4 +30,10 @@ CalcuChef/
 
 ## 📌 Estado del proyecto
 
-🚧 En desarrollo – Se estarán agregando funciones progresivamente.
+🚧 Session 1 - Interfaz principal
+- Se creo el archivo 'main.py' como punto de entrada del programa
+- Se implemento una ventana principal con 'Tkinder', incluyendo:
+    - Boton para ir a la gestion de ingredientes
+    - Boton para ir a la gestion de recetas
+    - Boton para salir del programa
+- Las acciones aun no estan conectadas; se mostraran como ventanas informativas temporales
