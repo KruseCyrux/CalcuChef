@@ -1,4 +1,5 @@
 import tkinter as tk
+from ui.ingredients_window import open_ingredients_window
 from tkinter import messagebox
 
 def launch_main_window():
@@ -10,7 +11,7 @@ def launch_main_window():
     title_label = tk.Label(root, text="CalcuChef", font=("Arial", 24, "bold"))
     title_label.pack(pady=20)
 
-    ingredients_button = tk.Button(root, text="Gestión de Ingredientes", width=30, command=lambda: messagebox.showinfo("Ingredientes", "Abrir módulo de ingredientes (próxima sesión)"))
+    ingredients_button = tk.Button(root, text="Gestión de Ingredientes", width=30, command=open_ingredients_window)
     ingredients_button.pack(pady=10)
 
     recipes_button = tk.Button(root, text="Gestión de Recetas", width=30, command=lambda: messagebox.showinfo("Recetas", "Abrir módulo de recetas (próxima sesión)"))

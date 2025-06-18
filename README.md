@@ -37,3 +37,10 @@ CalcuChef/
     - Boton para ir a la gestion de recetas
     - Boton para salir del programa
 - Las acciones aun no estan conectadas; se mostraran como ventanas informativas temporales
+
+## 🧩 Sesión 2 – Gestión de Ingredientes
+
+- Se creó la ventana de gestión de ingredientes (ingredients_window.py).
+- Se puede agregar, editar y eliminar ingredientes con nombre y precio.
+- Los ingredientes se guardan y leen desde un archivo JSON (data/ingredients.json).
+- Se agregó conexión desde la ventana principal
