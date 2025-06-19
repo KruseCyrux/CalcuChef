@@ -12,7 +12,7 @@
 - Interfaz gráfica amigable e intuitiva (Tkinter)
 
 ## 📁 Estructura del Proyecto
-
+```
 CalcuChef/
 │
 ├── main.py
@@ -21,7 +21,7 @@ CalcuChef/
 ├── core/
 ├── data/
 └── assets/
-
+```
 ## 🛠️ Tecnologías utilizadas
 
 - Python 3.x
@@ -30,12 +30,12 @@ CalcuChef/
 
 ## 📌 Estado del proyecto
 
-🚧 Session 1 - Interfaz principal
+## 🚧 Sesión 1 - Interfaz principal
 - Se creo el archivo 'main.py' como punto de entrada del programa
 - Se implemento una ventana principal con 'Tkinder', incluyendo:
-    - Boton para ir a la gestion de ingredientes
-    - Boton para ir a la gestion de recetas
-    - Boton para salir del programa
+- Boton para ir a la gestion de ingredientes
+- Boton para ir a la gestion de recetas
+- Boton para salir del programa
 - Las acciones aun no estan conectadas; se mostraran como ventanas informativas temporales
 
 ## 🧩 Sesión 2 – Gestión de Ingredientes
