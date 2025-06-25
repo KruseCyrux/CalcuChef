@@ -12,6 +12,7 @@
 - Interfaz gráfica amigable e intuitiva (Tkinter)
 
 ## 📁 Estructura del Proyecto
+
 ```
 CalcuChef/
 │
@@ -22,6 +23,7 @@ CalcuChef/
 ├── data/
 └── assets/
 ```
+
 ## 🛠️ Tecnologías utilizadas
 
 - Python 3.x
@@ -31,6 +33,7 @@ CalcuChef/
 ## 📌 Estado del proyecto
 
 ## 🚧 Sesión 1 - Interfaz principal
+
 - Se creo el archivo 'main.py' como punto de entrada del programa
 - Se implemento una ventana principal con 'Tkinder', incluyendo:
 - Boton para ir a la gestion de ingredientes
@@ -43,4 +46,12 @@ CalcuChef/
 - Se creó la ventana de gestión de ingredientes (ingredients_window.py).
 - Se puede agregar, editar y eliminar ingredientes con nombre y precio.
 - Los ingredientes se guardan y leen desde un archivo JSON (data/ingredients.json).
-- Se agregó conexión desde la ventana principal
+- Se agregó conexión desde la ventana principal
+
+## 🛠️ Sesión 3 – Gestión de Recetas 
+
+- Se creó la ventana para crear y ver recetas.
+- Al crear una receta, se pueden seleccionar ingredientes y cantidades.
+- Se calcula automáticamente el costo total y un precio sugerido de venta.
+- Las recetas se almacenan en el archivo `recipes.json`.
+- Se agregó el módulo `calculator.py` para manejar los cálculos.
