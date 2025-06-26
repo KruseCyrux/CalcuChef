@@ -55,3 +55,11 @@ CalcuChef/
 - Se calcula automáticamente el costo total y un precio sugerido de venta.
 - Las recetas se almacenan en el archivo `recipes.json`.
 - Se agregó el módulo `calculator.py` para manejar los cálculos.
+
+## 🧩 Sesión 4 – Edición y Eliminación de Recetas
+- Se agregó la posibilidad de editar recetas guardadas:
+  - Cambiar nombre.
+  - Modificar cantidades de ingredientes.
+  - Recalcular automáticamente costo total y precio sugerido.
+- Se implementó la función de eliminar recetas con confirmación.
+- La interfaz de recetas ahora es más completa y funcional.
