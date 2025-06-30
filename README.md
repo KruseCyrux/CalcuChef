@@ -63,3 +63,8 @@ CalcuChef/
   - Recalcular automáticamente costo total y precio sugerido.
 - Se implementó la función de eliminar recetas con confirmación.
 - La interfaz de recetas ahora es más completa y funcional.
+
+## 🧩 Sesión 5 – Exportacion a CSV
+- Se agrego funcionalidad para exportar datos a archivos `.csv`.
+- Desde cada ventana (ingredientes y recetas), se puede generar un archivo compatible con Excel o Google Sheets.
+- El archivo `exporter.py` centraliza la logica de exportacion.

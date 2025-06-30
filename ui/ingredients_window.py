@@ -1,3 +1,6 @@
+from core.exporter import export_ingredients_to_csv
+from core.data_manager import load_ingredients
+from tkinter import messagebox
 import tkinter as tk
 from tkinter import simpledialog, messagebox
 from core.data_manager import load_ingredients, save_ingredients
@@ -61,3 +64,11 @@ def open_ingredients_window():
     tk.Button(window, text="Eliminar", width=15, command=delete_ingredient).pack(pady=5)
 
     refresh_list()
+
+    def export_ingredientes():
+        ingredientes = load_ingredients()
+        export_ingredients_to_csv(ingredientes)
+        messagebox.showinfo("Exportacion exitosa", "Ingredientes exportados a 'ingredientes.csv'.")
+
+    tk.Button(window, text="Exportar Ingredientes a CSV", width=30, command=export_ingredientes).pack(pady=10)
+    

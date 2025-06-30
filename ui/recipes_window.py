@@ -1,3 +1,5 @@
+from core.exporter import export_ingredients_to_csv
+from tkinter import messagebox
 import tkinter as tk
 from tkinter import simpledialog, messagebox
 from core.data_manager import load_ingredients, load_recipes, save_recipes
@@ -136,3 +138,10 @@ def open_recipes_window():
     tk.Button(window, text="Eliminar Receta", width=25, command=delete_recipe).pack(pady=4)
 
     refresh_list()
+
+def exportar_recetas():
+    exportar_recipes_to_csv(recipes)
+    messagebox.showinfo("Exportacion exitosa", "Recetas exportadas a 'recetas.csv'.")
+
+tk.Button(window, text="Exportar Recetas a CSV", width=30, command=exportar_recetas).pack(pady=10)
+
