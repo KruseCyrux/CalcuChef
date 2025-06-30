@@ -12,20 +12,12 @@
         "precio": 12.0
     },
     {
-        "nombre": "Crema Agria",
-        "precio": 20.0
-    },
-    {
         "nombre": "Pure de Jitomate",
         "precio": 17.0
     },
     {
         "nombre": "Mantequilla Iberia",
         "precio": 20.0
-    },
-    {
-        "nombre": "Sazonador de Pollo \"Knorr\"",
-        "precio": 3.0
     },
     {
         "nombre": "Queso Parmesano",
@@ -42,5 +34,13 @@
     {
         "nombre": "Arroz",
         "precio": 25.0
+    },
+    {
+        "nombre": "Maruchan",
+        "precio": 23.0
+    },
+    {
+        "nombre": "Vape",
+        "precio": 365.0
     }
 ]

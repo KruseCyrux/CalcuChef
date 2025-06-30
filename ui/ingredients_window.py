@@ -65,10 +65,9 @@ def open_ingredients_window():
 
     refresh_list()
 
-    def export_ingredientes():
+    def exportar_ingredientes():
         ingredientes = load_ingredients()
         export_ingredients_to_csv(ingredientes)
         messagebox.showinfo("Exportacion exitosa", "Ingredientes exportados a 'ingredientes.csv'.")
 
-    tk.Button(window, text="Exportar Ingredientes a CSV", width=30, command=export_ingredientes).pack(pady=10)
-    
+    tk.Button(window, text="Exportar Ingredientes a CSV", width=30, command=exportar_ingredientes).pack(pady=10)
