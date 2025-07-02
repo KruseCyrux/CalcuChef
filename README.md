@@ -68,3 +68,11 @@ CalcuChef/
 - Se agrego funcionalidad para exportar datos a archivos `.csv`.
 - Desde cada ventana (ingredientes y recetas), se puede generar un archivo compatible con Excel o Google Sheets.
 - El archivo `exporter.py` centraliza la logica de exportacion.
+
+## 🧩 Sesion 6 - Actualizacion de precios
+
+- Se añadio la opcion de actualizar el precio de un ingrediente desde la interfaz. 
+-Al cambiar el precio, todas las recetas que contiene dicho ingrediente se actualizan automaticamente: 
+- Se recalcula su costo total.
+- Se ajusta el precio sugerido.
+- Se creo el archivo 'updater.py' para manejar estas operaciones de forma centralizada
