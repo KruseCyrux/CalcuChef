@@ -55,3 +55,12 @@ CalcuChef/
 - Se calcula automáticamente el costo total y un precio sugerido de venta.
 - Las recetas se almacenan en el archivo `recipes.json`.
 - Se agregó el módulo `calculator.py` para manejar los cálculos.
+
+## 🛠️ Sesión 7 – Simulación de Producción y Ganancias
+
+- Se agregó una función que permite simular la producción de múltiples unidades de una receta.
+- El usuario puede ver:
+  - Costo total de producción
+  - Precio total sugerido
+  - Ganancia estimada
+- Se creó el archivo `simulator.py` para manejar esta lógica.

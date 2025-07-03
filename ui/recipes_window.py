@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import simpledialog, messagebox
 from core.data_manager import load_ingredients, load_recipes, save_recipes
 from core.calculator import calcular_costo_total, calcular_precio_sugerido
+from core.simulator import simular_produccion
 
 def open_recipes_window():
     window = tk.Toplevel()
@@ -68,7 +69,31 @@ def open_recipes_window():
         detalles += f"\nCosto total: ${receta['costo_total']}\nPrecio sugerido: ${receta['precio_sugerido']}"
         messagebox.showinfo("Detalle de Receta", detalles)
 
+    def simular_receta():
+        selection = recipes_listbox.curselection()
+        if not selection:
+            messagebox.showwarning("Advertencia", "Selecciona una receta para simular.")
+            return
+        index = selection[0]
+        receta = recipes[index]
+
+        cantidad = simpledialog.askinteger("Simulación", f"¿Cuántas unidades de '{receta['nombre']}' deseas producir?")
+        if not cantidad or cantidad <= 0:
+            return
+
+        resultado = simular_produccion(receta, cantidad)
+
+        mensaje = (
+            f"Simulación para {cantidad} unidad(es) de '{receta['nombre']}':\n\n"
+            f"🧾 Costo total de producción: ${resultado['costo_total']:.2f}\n"
+            f"💰 Precio total sugerido: ${resultado['precio_total']:.2f}\n"
+            f"📈 Ganancia estimada: ${resultado['ganancia_total']:.2f}"
+        )
+
+        messagebox.showinfo("Resultado de Simulación", mensaje)
+
     tk.Button(window, text="Agregar Receta", command=add_recipe).pack(pady=5)
     tk.Button(window, text="Ver Detalle", command=ver_detalle).pack(pady=5)
+    tk.Button(window, text="Simular Producción", width=30, command=simular_receta).pack(pady=10)
 
     refresh_list()
