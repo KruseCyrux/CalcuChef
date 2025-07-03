@@ -48,7 +48,7 @@ CalcuChef/
 - Los ingredientes se guardan y leen desde un archivo JSON (data/ingredients.json).
 - Se agregó conexión desde la ventana principal
 
-## 🛠️ Sesión 3 – Gestión de Recetas 
+## 🛠️ Sesión 3 – Gestión de Recetas
 
 - Se creó la ventana para crear y ver recetas.
 - Al crear una receta, se pueden seleccionar ingredientes y cantidades.
