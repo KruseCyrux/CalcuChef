@@ -64,3 +64,24 @@ CalcuChef/
   - Precio total sugerido
   - Ganancia estimada
 - Se creó el archivo `simulator.py` para manejar esta lógica.
+
+## 🧩 Sesión 4 – Edición y Eliminación de Recetas
+- Se agregó la posibilidad de editar recetas guardadas:
+  - Cambiar nombre.
+  - Modificar cantidades de ingredientes.
+  - Recalcular automáticamente costo total y precio sugerido.
+- Se implementó la función de eliminar recetas con confirmación.
+- La interfaz de recetas ahora es más completa y funcional.
+
+## 🧩 Sesión 5 – Exportacion a CSV
+- Se agrego funcionalidad para exportar datos a archivos `.csv`.
+- Desde cada ventana (ingredientes y recetas), se puede generar un archivo compatible con Excel o Google Sheets.
+- El archivo `exporter.py` centraliza la logica de exportacion.
+
+## 🧩 Sesion 6 - Actualizacion de precios
+
+- Se añadio la opcion de actualizar el precio de un ingrediente desde la interfaz. 
+-Al cambiar el precio, todas las recetas que contiene dicho ingrediente se actualizan automaticamente: 
+- Se recalcula su costo total.
+- Se ajusta el precio sugerido.
+- Se creo el archivo 'updater.py' para manejar estas operaciones de forma centralizada

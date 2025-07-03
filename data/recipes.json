@@ -1,1 +1,61 @@
-[]
+[
+    {
+        "nombre": "Spaghetti Rojo",
+        "ingredientes": [
+            {
+                "nombre": "Spaghetti 'Moderna'",
+                "precio": 12.0,
+                "cantidad": 1.0
+            },
+            {
+                "nombre": "Pure de Jitomate",
+                "precio": 17.0,
+                "cantidad": 2.0
+            },
+            {
+                "nombre": "Mantequilla Iberia",
+                "precio": 20.0,
+                "cantidad": 2.0
+            },
+            {
+                "nombre": "Sazonador de Pollo \"Knorr\"",
+                "precio": 3.0,
+                "cantidad": 1.0
+            },
+            {
+                "nombre": "Queso Parmesano",
+                "precio": 25.0,
+                "cantidad": 1.0
+            },
+            {
+                "nombre": "Sal",
+                "precio": 10.0,
+                "cantidad": 1.0
+            },
+            {
+                "nombre": "Pimienta",
+                "precio": 4.0,
+                "cantidad": 1.0
+            }
+        ],
+        "costo_total": 128.0,
+        "precio_sugerido": 166.4
+    },
+    {
+        "nombre": "Sopa",
+        "ingredientes": [
+            {
+                "nombre": "Jitomate",
+                "precio": 50.0,
+                "cantidad": 1.0
+            },
+            {
+                "nombre": "Spaghetti 'Moderna'",
+                "precio": 12.0,
+                "cantidad": 1.0
+            }
+        ],
+        "costo_total": 62.0,
+        "precio_sugerido": 80.6
+    }
+]

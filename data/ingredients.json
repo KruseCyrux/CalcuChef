@@ -1,1 +1,46 @@
-{}
+[
+    {
+        "nombre": "Pepino",
+        "precio": 20.0
+    },
+    {
+        "nombre": "Jitomate",
+        "precio": 50.0
+    },
+    {
+        "nombre": "Spaghetti 'Moderna'",
+        "precio": 12.0
+    },
+    {
+        "nombre": "Pure de Jitomate",
+        "precio": 17.0
+    },
+    {
+        "nombre": "Mantequilla Iberia",
+        "precio": 20.0
+    },
+    {
+        "nombre": "Queso Parmesano",
+        "precio": 25.0
+    },
+    {
+        "nombre": "Sal",
+        "precio": 10.0
+    },
+    {
+        "nombre": "Pimienta",
+        "precio": 4.0
+    },
+    {
+        "nombre": "Arroz",
+        "precio": 25.0
+    },
+    {
+        "nombre": "Maruchan",
+        "precio": 23.0
+    },
+    {
+        "nombre": "Vape",
+        "precio": 365.0
+    }
+]
