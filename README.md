@@ -87,3 +87,12 @@ CalcuChef/
   - Precio total sugerido
   - Ganancia estimada
 - Se creó el archivo `simulator.py` para manejar esta lógica.
+
+## 📊 Sesión 8 – Estadísticas visuales
+
+- Se creó una nueva ventana que muestra datos clave:
+  - Ingrediente más usado en recetas
+  - Receta más rentable
+  - Total invertido en ingredientes
+  - Gráfica de precios sugeridos por receta
+- Se agregó el archivo `stats.py` para manejar estadísticas.

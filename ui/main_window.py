@@ -2,6 +2,7 @@ import tkinter as tk
 from ui.ingredients_window import open_ingredients_window
 from tkinter import messagebox
 from ui.recipes_window import open_recipes_window
+from ui.stats_window import open_stats_window
 
 def launch_main_window():
     root = tk.Tk()
@@ -17,6 +18,9 @@ def launch_main_window():
 
     recipes_button = tk.Button(root, text="Gestión de Recetas", width=30, command=open_recipes_window)
     recipes_button.pack(pady=10)
+
+    stats_button = tk.Button(root, text="Estadísticas", width=30, command=open_stats_window)
+    stats_button.pack(pady=10)
 
     exit_button = tk.Button(root, text="Salir", width=30, command=root.quit)
     exit_button.pack(pady=10)
