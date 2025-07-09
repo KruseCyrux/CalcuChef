@@ -96,3 +96,10 @@ CalcuChef/
   - Total invertido en ingredientes
   - Gráfica de precios sugeridos por receta
 - Se agregó el archivo `stats.py` para manejar estadísticas.
+
+## 🔍 Sesión 9 – Búsqueda y Categorías
+
+- Se añadió funcionalidad de búsqueda por nombre de receta.
+- Se permite filtrar recetas por categoría.
+- Al agregar o editar recetas, ahora se incluye una categoría personalizada.
+- La categoría se muestra en la vista de detalles y lista general.

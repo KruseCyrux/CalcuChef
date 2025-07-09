@@ -13,18 +13,33 @@ def open_recipes_window():
     ingredients = load_ingredients()
     recipes = load_recipes()
 
+    search_var = tk.StringVar()
+    category_var = tk.StringVar()
+
+    tk.Label(window, text="Buscar receta por nombre:").pack()
+    tk.Entry(window, textvariable=search_var, width=40).pack()
+
+    tk.Label(window, text="Filtrar por categoría:").pack()
+    tk.Entry(window, textvariable=category_var, width=40).pack()
+
+    tk.Button(window, text="Aplicar Filtros", command=lambda: refresh_list(search_var.get(), category_var.get())).pack(pady=5)
+    
     recipes_listbox = tk.Listbox(window, width=60)
     recipes_listbox.pack(pady=10)
 
-    def refresh_list():
+    def refresh_list(filtro_nombre="", filtro_categoria=""):
         recipes_listbox.delete(0, tk.END)
         for i, r in enumerate(recipes):
-            recipes_listbox.insert(tk.END, f"{i+1}. {r['nombre']} - ${r['costo_total']}")
+            if (filtro_nombre.lower() in r["nombre"].lower()) and (filtro_categoria.lower() in r["categoria"].lower()):
+                recipes_listbox.insert(tk.END, f"{i+1}. {r['nombre']} - {r['categoria']} - ${r['costo_total']}")
 
     def add_recipe():
         nombre = simpledialog.askstring("Nueva Receta", "Nombre de la receta:")
         if not nombre:
             return
+        categoria = simpledialog.askstring("Categoría", "¿A qué categoría pertenece la receta?")
+        if not categoria:
+            categoria = "Sin categoría"
 
         ingredientes_receta = []
         for ing in ingredients:
@@ -50,6 +65,7 @@ def open_recipes_window():
 
         nueva_receta = {
             "nombre": nombre,
+            "categoria": categoria,
             "ingredientes": ingredientes_receta,
             "costo_total": round(costo_total, 2),
             "precio_sugerido": precio_sugerido
@@ -65,7 +81,7 @@ def open_recipes_window():
             return
         index = selection[0]
         receta = recipes[index]
-        detalles = f"Receta: {receta['nombre']}\n\nIngredientes:\n"
+        detalles = f"Receta: {receta['nombre']}\nCategoría: {receta.get('categoria', 'Sin categoría')}\n\nIngredientes:\n"
         for ing in receta["ingredientes"]:
             subtotal = round(ing["cantidad"] * ing["precio"], 2)
             detalles += f"- {ing['nombre']}: {ing['cantidad']} x ${ing['precio']} = ${subtotal}\n"
@@ -107,6 +123,10 @@ def open_recipes_window():
         if not nuevo_nombre:
             return
 
+        nueva_categoria = simpledialog.askstring("Editar categoría", "Nueva categoría:", initialvalue=receta.get("categoria", "Sin categoría"))
+        if not nueva_categoria:
+            nueva_categoria = "Sin categoría"
+
         ingredientes_editados = []
         for ing in receta["ingredientes"]:
             nueva_cantidad = simpledialog.askstring(
@@ -132,6 +152,7 @@ def open_recipes_window():
         # Actualizar receta
         recipes[index] = {
             "nombre": nuevo_nombre,
+            "categoria": nueva_categoria,
             "ingredientes": ingredientes_editados,
             "costo_total": round(nuevo_costo, 2),
             "precio_sugerido": nuevo_precio
