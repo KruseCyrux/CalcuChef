@@ -1,90 +1,116 @@
-import json
-import os
-import ttkbootstrap as tkk
+import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from tkinter import simpledialog, messagebox
+from core.data_manager import load_ingredients, save_ingredients
+from core.exporter import export_ingredients_to_csv
+from core.updater import actualizar_precios_recetas
 
-from utils.data_manager import load_ingredients, save_ingredients
-from utils.calculator import calcular_costo_unitario
 
 def open_ingredients_window():
-    ingredients = load_ingredients()
-
-
-    ventana = ttk.Toplevel(title="Gestion de Ingredientes", themename="flatly")
+    ventana = ttk.Toplevel()
+    ventana.title("Gestión de Ingredientes")
     ventana.geometry("500x400")
-    ventana.resizable(False, False)
+    ventana.state("zoomed")   # maximizar ventana secundaria
+    ventana.resizable(True, True)
 
-    ingredients = load_ingredients()
+    ingredientes = load_ingredients()
 
-    lista = ttk.Treeview(ventana, columns=("Precio", "Unidad"), show="headings", bootstyle="info")
+    # Treeview solo con columnas Nombre y Precio
+    lista = ttk.Treeview(ventana, columns=("Nombre", "Precio"), show="headings", bootstyle="info")
+    lista.heading("Nombre", text="Nombre")
     lista.heading("Precio", text="Precio")
-    lista.heading("Unidad", text="Unidad")
-    lista.column("Precio", width=100, anchor="center")
-    lista.column("Unidad", width=100, anchor="center")
-    lista.pack(pady=10, fill="both", expand="True")
-
+    lista.column("Nombre", width=300, anchor="w")
+    lista.column("Precio", width=150, anchor="center")
+    lista.pack(pady=10, fill="both", expand=True)
 
     def refrescar():
         lista.delete(*lista.get_children())
         for ing in ingredientes:
-            lista.insert("", "end", text=ing["nombre"],
-                         values=(f"${ing['precio']:.2f}", ing["unidad"]))
-
+            lista.insert("", "end", values=(ing["nombre"], f"${ing['precio']:.2f}"))
 
     def agregar_ingrediente():
-                nombre = simpledialog.askstring("Nombre", "Nombre del ingrediente:")
-                if not nombre:
-                    return
-                try:
-                    precio = float(simpledialog.askstring("Precio", "Precio del Ingrediente:"))
-                    unidad = simpledialog.askstring("Unidad (ej: kg, L, pieza)", "Unidad:")
-                    if not unidad:
-                        unidad = "unidad"
-                except:
-                    messagebox.showerror("Error", "Datos invalidos.")
-                    return
-                
-                ingredientes.append({"nombre": nombre, "precio": precio, "unidad": unidad})
-                save_ingredients(ingredientes)
-                refrescar()
+        nombre = simpledialog.askstring("Agregar Ingrediente", "Nombre del ingrediente:")
+        if not nombre:
+            return
+        try:
+            precio = float(simpledialog.askstring("Agregar Ingrediente", "Precio por unidad:"))
+        except (TypeError, ValueError):
+            messagebox.showerror("Error", "El precio debe ser un número válido.")
+            return
 
+        ingredientes.append({"nombre": nombre, "precio": precio})
+        save_ingredients(ingredientes)
+        refrescar()
 
     def eliminar_ingrediente():
-                seleccion = lista.selection()
-                if not seleccion:
-                    messagebox.showwarning("Atencion", "Selecciona un ingrediente para eliminar.")
-                    return
-                idx = lista.index(seleccion)
-                del ingredientes[idx]
-                save_ingredients(ingredientes)
-                refrescar()
+        seleccion = lista.selection()
+        if not seleccion:
+            messagebox.showwarning("Atención", "Selecciona un ingrediente para eliminar.")
+            return
+        idx = lista.index(seleccion[0])
+        confirm = messagebox.askyesno("Confirmar", f"¿Eliminar '{ingredientes[idx]['nombre']}'?")
+        if confirm:
+            ingredientes.pop(idx)
+            save_ingredients(ingredientes)
+            refrescar()
 
-
-    def edit_ingredient():
-        selection = listbox.curselection()
-        if not selection:
+    def editar_ingrediente():
+        seleccion = lista.selection()
+        if not seleccion:
             messagebox.showwarning("Atención", "Selecciona un ingrediente para editar.")
             return
-        index = selection[0]
-        ing = ingredients[index]
-        nuevo_nombre = simpledialog.askstring("Editar", "Nuevo nombre:", initialvalue=ing["nombre"])
+        idx = lista.index(seleccion[0])
+        ing = ingredientes[idx]
+
+        nuevo_nombre = simpledialog.askstring("Editar Ingrediente", "Nombre:", initialvalue=ing["nombre"])
+        if not nuevo_nombre:
+            return
         try:
-            nuevo_precio = float(simpledialog.askstring("Editar", "Nuevo precio:", initialvalue=ing["precio"]))
-            ingredients[index] = {"nombre": nuevo_nombre, "precio": nuevo_precio}
-            save_ingredients(ingredients)
-            refresh_list()
+            nuevo_precio = float(simpledialog.askstring("Editar Ingrediente", "Precio por unidad:", initialvalue=str(ing["precio"])))
+        except (TypeError, ValueError):
+            messagebox.showerror("Error", "El precio debe ser un número válido.")
+            return
 
+        ingredientes[idx] = {"nombre": nuevo_nombre, "precio": nuevo_precio}
+        save_ingredients(ingredientes)
+        refrescar()
 
-        except ValueError:
-            messagebox.showerror("Error", "El precio debe ser un número.")
+    def actualizar_precio():
+        seleccion = lista.selection()
+        if not seleccion:
+            messagebox.showwarning("Atención", "Selecciona un ingrediente para actualizar precio.")
+            return
+        idx = lista.index(seleccion[0])
+        ing = ingredientes[idx]
 
-     # Botones
-            frame_botones = ttk.Frame(ventana)
-            frame_botones.pack(pady=10)
+        nuevo_precio = simpledialog.askfloat("Actualizar Precio", f"Ingrese nuevo precio para '{ing['nombre']}' (actual: ${ing['precio']:.2f}):")
+        if nuevo_precio is None:
+            return
 
-            ttk.Button(frame_botones, text="Agregar", bootstyle="success", command=agregar_ingrediente).grid(row=0, column=0, padx=10)
-            ttk.Button(frame_botones, text="Eliminar", bootstyle="danger", command=eliminar_ingrediente).grid(row=0, column=1, padx=10)
-            ttk.Button(frame_botones, text="Cerrar", bootstyle="secondary", command=ventana.destroy).grid(row=0, column=2, padx=10)
+        ingredientes[idx]["precio"] = nuevo_precio
+        save_ingredients(ingredientes)
+
+        recetas_afectadas = actualizar_precios_recetas(ing["nombre"], nuevo_precio)
+
+        refrescar()
+        messagebox.showinfo(
+            "Actualización completada",
+            f"Precio de '{ing['nombre']}' actualizado a ${nuevo_precio:.2f}.\n"
+            f"{recetas_afectadas} receta(s) afectada(s) y recalculada(s)."
+        )
+
+    def exportar_ingredientes():
+        export_ingredients_to_csv(ingredientes)
+        messagebox.showinfo("Exportación exitosa", "Ingredientes exportados a 'ingredientes.csv'.")
+
+    # Botones en Frame para ordenarlos mejor
+    frame_botones = ttk.Frame(ventana)
+    frame_botones.pack(pady=10)
+
+    ttk.Button(frame_botones, text="Agregar", bootstyle="success", command=agregar_ingrediente).grid(row=0, column=0, padx=5)
+    ttk.Button(frame_botones, text="Editar", bootstyle="warning", command=editar_ingrediente).grid(row=0, column=1, padx=5)
+    ttk.Button(frame_botones, text="Eliminar", bootstyle="danger", command=eliminar_ingrediente).grid(row=0, column=2, padx=5)
+    ttk.Button(frame_botones, text="Actualizar Precio", bootstyle="info", command=actualizar_precio).grid(row=0, column=3, padx=5)
+    ttk.Button(frame_botones, text="Exportar a CSV", bootstyle="secondary", command=exportar_ingredientes).grid(row=0, column=4, padx=5)
 
     refrescar()

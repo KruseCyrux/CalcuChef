@@ -103,3 +103,14 @@ CalcuChef/
 - Se permite filtrar recetas por categoría.
 - Al agregar o editar recetas, ahora se incluye una categoría personalizada.
 - La categoría se muestra en la vista de detalles y lista general.
+
+## 🧩 Sesión Extra A - Mejora visual con ttkbootstrap
+
+- Objetivo: Modernizar y embellecer la interfaz gráfica de CalcuChef utilizando el framework ttkbootstrap, el cual provee temas visuales atractivos, botones estilizados, y una experiencia más amigable para el usuario final.
+
+# 🛠 Cambios realizados
+- Se reemplazó el uso tradicional de tkinter y ttk por ttkbootstrap.
+- Se integró un tema moderno y profesional: "superhero" (puede cambiarse fácilmente por otro).
+- Se mejoraron todos los botones, etiquetas y cuadros de texto para usar estilos visuales de ttkbootstrap.
+- Se aplicaron colores, padding y espaciado inteligente para una mejor distribución visual.
+- Se agregaron mensajes más claros, encabezados estilizados y controles visuales mejorados.
