@@ -1,24 +1,24 @@
 import tkinter as tk
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
-from tkinter import simpledialog, messagebox
+from tkinter import simpledialog, messagebox, ttk
 from core.data_manager import load_ingredients, load_recipes, save_recipes
 from core.calculator import calcular_costo_total, calcular_precio_sugerido
 from core.simulator import simular_produccion
 from core.exporter import export_recipes_to_csv
 
 def open_recipes_window():
-    window = ttk.Toplevel()
+    window = tk.Toplevel()
     window.title("Gestión de Recetas")
     window.geometry("500x600")
-    window.state("zoomed")   # <-- maximizar ventana secundaria
+    window.state("zoomed")
     window.resizable(True, True)
 
     ingredients = load_ingredients()
     recipes = load_recipes()
 
-    search_var = ttk.StringVar()
-    category_var = ttk.StringVar()
+    search_var = tk.StringVar()
+    category_var = tk.StringVar()
 
     ttk.Label(window, text="Buscar receta por nombre:", bootstyle="primary").pack(pady=(10, 2))
     ttk.Entry(window, textvariable=search_var, width=40).pack()
@@ -169,6 +169,26 @@ def open_recipes_window():
             save_recipes(recipes)
             refresh_list()
 
+    # ✅ NUEVO: Recalcular costos con precios actualizados
+    def recalcular_costos_recetas():
+        for receta in recipes:
+            nuevos_ingredientes = []
+            for ing in receta["ingredientes"]:
+                nombre = ing["nombre"]
+                base = next((i for i in ingredients if i["nombre"] == nombre), None)
+                if base:
+                    nuevos_ingredientes.append({
+                        "nombre": nombre,
+                        "precio": base["precio"],
+                        "cantidad": ing["cantidad"]
+                    })
+            receta["ingredientes"] = nuevos_ingredientes
+            receta["costo_total"] = round(calcular_costo_total(nuevos_ingredientes), 2)
+            receta["precio_sugerido"] = calcular_precio_sugerido(receta["costo_total"])
+        save_recipes(recipes)
+        refresh_list()
+        messagebox.showinfo("Actualizado", "Todos los costos fueron recalculados con los precios actuales.")
+
     def exportar_recetas():
         export_recipes_to_csv(recipes)
         messagebox.showinfo("Exportación exitosa", "Recetas exportadas a 'recetas.csv'.")
@@ -179,5 +199,6 @@ def open_recipes_window():
     ttk.Button(window, text="Eliminar Receta", width=25, command=delete_recipe, bootstyle="danger-outline").pack(pady=4)
     ttk.Button(window, text="Exportar Recetas a CSV", width=30, command=exportar_recetas, bootstyle="info").pack(pady=10)
     ttk.Button(window, text="Simular Producción", width=30, command=simular_receta, bootstyle="primary").pack(pady=10)
+    ttk.Button(window, text="🔄 Recalcular Costos", width=30, command=recalcular_costos_recetas, bootstyle="dark-outline").pack(pady=10)
 
     refresh_list()

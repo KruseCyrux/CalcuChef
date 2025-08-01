@@ -5,7 +5,7 @@
         "ingredientes": [
             {
                 "nombre": "Pepino",
-                "precio": 20.0,
+                "precio": 10.0,
                 "cantidad": 3.0
             },
             {
@@ -39,8 +39,8 @@
                 "cantidad": 2.0
             }
         ],
-        "costo_total": 909.0,
-        "precio_sugerido": 1181.7
+        "costo_total": 879.0,
+        "precio_sugerido": 1142.7
     },
     {
         "nombre": "Pizza",
@@ -48,7 +48,7 @@
         "ingredientes": [
             {
                 "nombre": "Pepino",
-                "precio": 20.0,
+                "precio": 10.0,
                 "cantidad": 2.0
             },
             {
@@ -77,7 +77,7 @@
                 "cantidad": 1.0
             }
         ],
-        "costo_total": 188.0,
-        "precio_sugerido": 244.4
+        "costo_total": 168.0,
+        "precio_sugerido": 218.4
     }
 ]

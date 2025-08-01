@@ -106,11 +106,17 @@ CalcuChef/
 
 ## 🧩 Sesión Extra A - Mejora visual con ttkbootstrap
 
-- Objetivo: Modernizar y embellecer la interfaz gráfica de CalcuChef utilizando el framework ttkbootstrap, el cual provee temas visuales atractivos, botones estilizados, y una experiencia más amigable para el usuario final.
-
-# 🛠 Cambios realizados
 - Se reemplazó el uso tradicional de tkinter y ttk por ttkbootstrap.
 - Se integró un tema moderno y profesional: "superhero" (puede cambiarse fácilmente por otro).
 - Se mejoraron todos los botones, etiquetas y cuadros de texto para usar estilos visuales de ttkbootstrap.
 - Se aplicaron colores, padding y espaciado inteligente para una mejor distribución visual.
 - Se agregaron mensajes más claros, encabezados estilizados y controles visuales mejorados.
+
+## 📘 Sesión Extra B - Inventario De Insumos
+`ui/recipes_window.py`
+- Se rediseñó la interfaz de la ventana de recetas:
+- Se agregó una barra de búsqueda por nombre usando tk.StringVar().
+- Se conectó dicha barra a un evento <KeyRelease> para actualizar en tiempo real el listado mostrado.
+- Se incorporó un Treeview para mostrar las recetas de forma más clara y estructurada.
+- Se eliminó la lista sin formato previa para reemplazarla por la tabla dinámica.
+- Se mejoró la experiencia visual con ttkbootstrap.

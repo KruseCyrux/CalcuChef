@@ -1,46 +1,74 @@
 [
     {
         "nombre": "Pepino",
-        "precio": 20.0
+        "precio": 10.0,
+        "cantidad": 29.0,
+        "umbral": 13.0
     },
     {
         "nombre": "Jitomate",
-        "precio": 25.0
+        "precio": 25.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Spaghetti 'Moderna'",
-        "precio": 12.0
+        "precio": 12.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Pure de Jitomate",
-        "precio": 17.0
+        "precio": 17.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Mantequilla Iberia",
-        "precio": 20.0
+        "precio": 20.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Queso Parmesano",
-        "precio": 25.0
+        "precio": 25.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Sal",
-        "precio": 10.0
+        "precio": 10.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Pimienta",
-        "precio": 4.0
+        "precio": 4.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Arroz",
-        "precio": 25.0
+        "precio": 25.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Maruchan",
-        "precio": 23.0
+        "precio": 23.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     },
     {
         "nombre": "Vape",
-        "precio": 365.0
+        "precio": 365.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
+    },
+    {
+        "nombre": "Manzana",
+        "precio": 12.0,
+        "cantidad": 0.0,
+        "umbral_minimo": 0.0
     }
 ]
