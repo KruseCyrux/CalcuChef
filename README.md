@@ -120,3 +120,7 @@ CalcuChef/
 - Se incorporó un Treeview para mostrar las recetas de forma más clara y estructurada.
 - Se eliminó la lista sin formato previa para reemplazarla por la tabla dinámica.
 - Se mejoró la experiencia visual con ttkbootstrap.
+
+## 🧩 Sesión Extra E – Exportación e Importación de Datos Generales en JSON
+- Botón “Exportar sistema”: Exporta todos los datos (ingredientes y recetas) a un archivo .json o .zip estructurado.
+- Botón “Importar sistema”: Permite al usuario cargar un archivo previamente exportado para restaurar todos los datos.

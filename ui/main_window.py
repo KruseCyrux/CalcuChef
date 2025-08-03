@@ -3,6 +3,7 @@ from ttkbootstrap.constants import *
 from ui.ingredients_window import open_ingredients_window
 from ui.recipes_window import open_recipes_window
 from ui.stats_window import open_stats_window
+from ui.backup_window import open_backup_window  # ← Asegúrate de tener este archivo
 
 def launch_main_window():
     root = ttk.Window(themename="flatly")
@@ -51,15 +52,15 @@ def launch_main_window():
     )
     stats_button.pack(pady=10)
 
-    # Botón de salir
-    exit_button = ttk.Button(
+    # Botón de respaldo de datos
+    backup_button = ttk.Button(
         main_frame,
-        text="Salir",
+        text="Respaldo de Datos",
         width=40,
-        bootstyle="danger",
-        command=root.quit
+        bootstyle="secondary",
+        command=open_backup_window
     )
-    exit_button.pack(pady=20)
+    backup_button.pack(pady=10)
 
     # Botón de alternar pantalla completa
     def toggle_fullscreen():
@@ -75,5 +76,14 @@ def launch_main_window():
     )
     fullscreen_button.pack(pady=10)
 
-    root.mainloop()
+    # Botón de salir
+    exit_button = ttk.Button(
+        main_frame,
+        text="Salir",
+        width=40,
+        bootstyle="danger",
+        command=root.quit
+    )
+    exit_button.pack(pady=20)
 
+    root.mainloop()
