@@ -113,7 +113,9 @@ CalcuChef/
 - Se agregaron mensajes más claros, encabezados estilizados y controles visuales mejorados.
 
 ## 📘 Sesión Extra B - Inventario De Insumos
+
 `ui/recipes_window.py`
+
 - Se rediseñó la interfaz de la ventana de recetas:
 - Se agregó una barra de búsqueda por nombre usando tk.StringVar().
 - Se conectó dicha barra a un evento <KeyRelease> para actualizar en tiempo real el listado mostrado.
@@ -122,5 +124,15 @@ CalcuChef/
 - Se mejoró la experiencia visual con ttkbootstrap.
 
 ## 🧩 Sesión Extra E – Exportación e Importación de Datos Generales en JSON
+
 - Botón “Exportar sistema”: Exporta todos los datos (ingredientes y recetas) a un archivo .json o .zip estructurado.
 - Botón “Importar sistema”: Permite al usuario cargar un archivo previamente exportado para restaurar todos los datos.
+
+## 🧩 Sesión Extra F – Manejo de Errores en Carga de Ingredientes
+
+- Se agregó manejo de errores al cargar ingredientes en ingredients_window.py.
+- Se agregó manejo de errores al cargar ingredientes en recipes_window.py.
+- Se mejoró la estabilidad al evitar cierres inesperados.
+- Se añadieron mensajes claros de error con messagebox.showerror.
+- Se fortaleció la robustez frente a archivos inexistentes o dañados.
+- Se unificó el control de errores en las ventanas principales.
