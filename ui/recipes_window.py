@@ -10,6 +10,15 @@ def open_recipes_window():
     window.title("Gestión de Recetas")
     window.geometry("500x550")
 
+    try:
+        ingredients = load_ingredients()
+    except Exception as e:
+        messagebox.showerror(
+            "Error al cargar ingredientes",
+            f"No se pudieron cargar los ingredientes.\n\nDetalles: {str(e)}"
+        )
+        return
+
     ingredients = load_ingredients()
     recipes = load_recipes()
 

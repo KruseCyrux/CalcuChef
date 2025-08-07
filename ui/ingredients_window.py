@@ -7,6 +7,12 @@ from core.data_manager import load_ingredients, save_ingredients
 from core.updater import actualizar_precios_recetas
 
 def open_ingredients_window():
+    try:
+        ingredientes = load_ingredients()
+    except Exception as e:
+        messagebox.showerror("Error al cargar ingredientes", f"No se pudieron cargar los ingredientes.\n\nDetalles: {str(e)}")
+        return
+
     window = tk.Toplevel()
     window.title("Gestión de Ingredientes")
     window.geometry("400x400")
