@@ -1,3 +1,4 @@
+import tkinter as tk
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from tkinter import simpledialog, messagebox
@@ -11,15 +12,13 @@ def open_ingredients_window():
     except Exception as e:
         messagebox.showerror("Error al cargar ingredientes", f"No se pudieron cargar los ingredientes.\n\nDetalles: {str(e)}")
         return
-    
+
     window = tk.Toplevel()
     window.title("Gestión de Ingredientes")
     window.geometry("400x400")
 
-    ingredientes = load_ingredients()
-
     lista = ttk.Treeview(
-        ventana,
+        window,
         columns=("Nombre", "Precio", "Cantidad", "Mínimo"),
         show="headings",
         bootstyle="info"
@@ -135,7 +134,6 @@ def open_ingredients_window():
         recetas_afectadas = actualizar_precios_recetas(ing["nombre"], nuevo_precio)
         refrescar()
 
-        # Verificar si está bajo stock después de la actualización
         if ingredientes[idx].get("cantidad", 0) <= ingredientes[idx].get("umbral", 0):
             messagebox.showwarning("Stock Bajo", f"'{ing['nombre']}' tiene bajo stock.")
 
@@ -168,7 +166,7 @@ def open_ingredients_window():
         refrescar()
         messagebox.showinfo("Reabastecido", f"'{ing['nombre']}' incrementado en {cantidad_extra} unidades.")
 
-    frame_botones = ttk.Frame(ventana)
+    frame_botones = ttk.Frame(window)
     frame_botones.pack(pady=10)
 
     ttk.Button(frame_botones, text="Agregar", bootstyle="success", command=agregar_ingrediente).grid(row=0, column=0, padx=5)

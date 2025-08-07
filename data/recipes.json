@@ -1,31 +1,36 @@
 [
     {
-        "nombre": "Maruchan",
-        "categoria": "Comida Rapida",
+        "nombre": "Crema de Champiñones",
+        "categoria": "Entrada",
         "ingredientes": [
             {
-                "nombre": "Pepino",
+                "nombre": "Champiñones",
                 "precio": 10.0,
+                "cantidad": 2.0
+            },
+            {
+                "nombre": "Crema Ácida",
+                "precio": 6.0,
+                "cantidad": 2.0
+            },
+            {
+                "nombre": "Cebolla",
+                "precio": 20.0,
                 "cantidad": 3.0
             },
             {
-                "nombre": "Jitomate",
-                "precio": 25.0,
-                "cantidad": 2.0
+                "nombre": "Ajo",
+                "precio": 5.0,
+                "cantidad": 3.0
             },
             {
-                "nombre": "Spaghetti 'Moderna'",
-                "precio": 12.0,
-                "cantidad": 2.0
-            },
-            {
-                "nombre": "Pure de Jitomate",
-                "precio": 17.0,
+                "nombre": "Mantequilla",
+                "precio": 20.0,
                 "cantidad": 1.0
             },
             {
                 "nombre": "Sal",
-                "precio": 10.0,
+                "precio": 3.0,
                 "cantidad": 2.0
             },
             {
@@ -34,50 +39,12 @@
                 "cantidad": 2.0
             },
             {
-                "nombre": "Vape",
-                "precio": 365.0,
+                "nombre": "Pollo",
+                "precio": 50.0,
                 "cantidad": 2.0
             }
         ],
-        "costo_total": 879.0,
-        "precio_sugerido": 1142.7
-    },
-    {
-        "nombre": "Pizza",
-        "categoria": "Comida Rapida",
-        "ingredientes": [
-            {
-                "nombre": "Pepino",
-                "precio": 10.0,
-                "cantidad": 2.0
-            },
-            {
-                "nombre": "Jitomate",
-                "precio": 25.0,
-                "cantidad": 2.0
-            },
-            {
-                "nombre": "Pure de Jitomate",
-                "precio": 17.0,
-                "cantidad": 2.0
-            },
-            {
-                "nombre": "Queso Parmesano",
-                "precio": 25.0,
-                "cantidad": 2.0
-            },
-            {
-                "nombre": "Sal",
-                "precio": 10.0,
-                "cantidad": 1.0
-            },
-            {
-                "nombre": "Pimienta",
-                "precio": 4.0,
-                "cantidad": 1.0
-            }
-        ],
-        "costo_total": 168.0,
-        "precio_sugerido": 218.4
+        "costo_total": 241.0,
+        "precio_sugerido": 313.3
     }
 ]
