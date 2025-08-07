@@ -1,5 +1,7 @@
 import tkinter as tk
-from tkinter import simpledialog, messagebox
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
+from tkinter import simpledialog, messagebox, ttk
 from core.data_manager import load_ingredients, load_recipes, save_recipes
 from core.calculator import calcular_costo_total, calcular_precio_sugerido
 from core.simulator import simular_produccion
@@ -8,7 +10,9 @@ from core.exporter import export_recipes_to_csv
 def open_recipes_window():
     window = tk.Toplevel()
     window.title("Gestión de Recetas")
-    window.geometry("500x550")
+    window.geometry("500x600")
+    window.state("zoomed")
+    window.resizable(True, True)
 
     try:
         ingredients = load_ingredients()
@@ -22,18 +26,31 @@ def open_recipes_window():
     ingredients = load_ingredients()
     recipes = load_recipes()
 
-    recipes_listbox = tk.Listbox(window, width=60)
+    search_var = tk.StringVar()
+    category_var = tk.StringVar()
+
+    ttk.Label(window, text="Buscar receta por nombre:", bootstyle="primary").pack(pady=(10, 2))
+    ttk.Entry(window, textvariable=search_var, width=40).pack()
+
+    ttk.Label(window, text="Filtrar por categoría:", bootstyle="primary").pack(pady=(10, 2))
+    ttk.Entry(window, textvariable=category_var, width=40).pack()
+
+    ttk.Button(window, text="Aplicar Filtros", bootstyle="info", command=lambda: refresh_list(search_var.get(), category_var.get())).pack(pady=5)
+
+    recipes_listbox = tk.Listbox(window, width=60, height=10)
     recipes_listbox.pack(pady=10)
 
-    def refresh_list():
-        recipes_listbox.delete(0, tk.END)
+    def refresh_list(filtro_nombre="", filtro_categoria=""):
+        recipes_listbox.delete(0, "end")
         for i, r in enumerate(recipes):
-            recipes_listbox.insert(tk.END, f"{i+1}. {r['nombre']} - ${r['costo_total']}")
+            if (filtro_nombre.lower() in r["nombre"].lower()) and (filtro_categoria.lower() in r["categoria"].lower()):
+                recipes_listbox.insert("end", f"{i+1}. {r['nombre']} - {r['categoria']} - ${r['costo_total']}")
 
     def add_recipe():
         nombre = simpledialog.askstring("Nueva Receta", "Nombre de la receta:")
         if not nombre:
             return
+        categoria = simpledialog.askstring("Categoría", "¿A qué categoría pertenece la receta?") or "Sin categoría"
 
         ingredientes_receta = []
         for ing in ingredients:
@@ -59,6 +76,7 @@ def open_recipes_window():
 
         nueva_receta = {
             "nombre": nombre,
+            "categoria": categoria,
             "ingredientes": ingredientes_receta,
             "costo_total": round(costo_total, 2),
             "precio_sugerido": precio_sugerido
@@ -74,7 +92,7 @@ def open_recipes_window():
             return
         index = selection[0]
         receta = recipes[index]
-        detalles = f"Receta: {receta['nombre']}\n\nIngredientes:\n"
+        detalles = f"Receta: {receta['nombre']}\nCategoría: {receta.get('categoria', 'Sin categoría')}\n\nIngredientes:\n"
         for ing in receta["ingredientes"]:
             subtotal = round(ing["cantidad"] * ing["precio"], 2)
             detalles += f"- {ing['nombre']}: {ing['cantidad']} x ${ing['precio']} = ${subtotal}\n"
@@ -97,7 +115,7 @@ def open_recipes_window():
 
         mensaje = (
             f"Simulación para {cantidad} unidad(es) de '{receta['nombre']}':\n\n"
-            f"🧾 Costo total de producción: ${resultado['costo_total']:.2f}\n"
+            f"📟 Costo total de producción: ${resultado['costo_total']:.2f}\n"
             f"💰 Precio total sugerido: ${resultado['precio_total']:.2f}\n"
             f"📈 Ganancia estimada: ${resultado['ganancia_total']:.2f}"
         )
@@ -116,13 +134,11 @@ def open_recipes_window():
         if not nuevo_nombre:
             return
 
+        nueva_categoria = simpledialog.askstring("Editar categoría", "Nueva categoría:", initialvalue=receta.get("categoria", "Sin categoría")) or "Sin categoría"
+
         ingredientes_editados = []
         for ing in receta["ingredientes"]:
-            nueva_cantidad = simpledialog.askstring(
-                "Editar cantidad",
-                f"{ing['nombre']} (actual: {ing['cantidad']}):",
-                initialvalue=str(ing["cantidad"])
-            )
+            nueva_cantidad = simpledialog.askstring("Editar cantidad", f"{ing['nombre']} (actual: {ing['cantidad']}):", initialvalue=str(ing["cantidad"]))
             if nueva_cantidad:
                 try:
                     cantidad_float = float(nueva_cantidad)
@@ -138,9 +154,9 @@ def open_recipes_window():
         nuevo_costo = calcular_costo_total(ingredientes_editados)
         nuevo_precio = calcular_precio_sugerido(nuevo_costo)
 
-        # Actualizar receta
         recipes[index] = {
             "nombre": nuevo_nombre,
+            "categoria": nueva_categoria,
             "ingredientes": ingredientes_editados,
             "costo_total": round(nuevo_costo, 2),
             "precio_sugerido": nuevo_precio
@@ -162,16 +178,36 @@ def open_recipes_window():
             save_recipes(recipes)
             refresh_list()
 
+    # ✅ NUEVO: Recalcular costos con precios actualizados
+    def recalcular_costos_recetas():
+        for receta in recipes:
+            nuevos_ingredientes = []
+            for ing in receta["ingredientes"]:
+                nombre = ing["nombre"]
+                base = next((i for i in ingredients if i["nombre"] == nombre), None)
+                if base:
+                    nuevos_ingredientes.append({
+                        "nombre": nombre,
+                        "precio": base["precio"],
+                        "cantidad": ing["cantidad"]
+                    })
+            receta["ingredientes"] = nuevos_ingredientes
+            receta["costo_total"] = round(calcular_costo_total(nuevos_ingredientes), 2)
+            receta["precio_sugerido"] = calcular_precio_sugerido(receta["costo_total"])
+        save_recipes(recipes)
+        refresh_list()
+        messagebox.showinfo("Actualizado", "Todos los costos fueron recalculados con los precios actuales.")
+
     def exportar_recetas():
         export_recipes_to_csv(recipes)
         messagebox.showinfo("Exportación exitosa", "Recetas exportadas a 'recetas.csv'.")
 
-    # BOTONES
-    tk.Button(window, text="Agregar Receta", width=25, command=add_recipe).pack(pady=4)
-    tk.Button(window, text="Ver Detalle", width=25, command=view_recipe).pack(pady=4)
-    tk.Button(window, text="Editar Receta", width=25, command=edit_recipe).pack(pady=4)
-    tk.Button(window, text="Eliminar Receta", width=25, command=delete_recipe).pack(pady=4)
-    tk.Button(window, text="Exportar Recetas a CSV", width=30, command=exportar_recetas).pack(pady=10)
-    tk.Button(window, text="Simular Producción", width=30, command=simular_receta).pack(pady=10)
+    ttk.Button(window, text="Agregar Receta", width=25, command=add_recipe, bootstyle="success-outline").pack(pady=4)
+    ttk.Button(window, text="Ver Detalle", width=25, command=view_recipe, bootstyle="secondary").pack(pady=4)
+    ttk.Button(window, text="Editar Receta", width=25, command=edit_recipe, bootstyle="warning-outline").pack(pady=4)
+    ttk.Button(window, text="Eliminar Receta", width=25, command=delete_recipe, bootstyle="danger-outline").pack(pady=4)
+    ttk.Button(window, text="Exportar Recetas a CSV", width=30, command=exportar_recetas, bootstyle="info").pack(pady=10)
+    ttk.Button(window, text="Simular Producción", width=30, command=simular_receta, bootstyle="primary").pack(pady=10)
+    ttk.Button(window, text="🔄 Recalcular Costos", width=30, command=recalcular_costos_recetas, bootstyle="dark-outline").pack(pady=10)
 
     refresh_list()

@@ -7,7 +7,7 @@ def actualizar_precios_recetas(nombre_ingrediente, nuevo_precio):
 
     for receta in recetas:
         actualizado = False
-        for ing in receta["ingeredientes"]:
+        for ing in receta["ingredientes"]:
             if ing["nombre"] == nombre_ingrediente:
                 ing["precio"] = nuevo_precio
                 actualizado = True

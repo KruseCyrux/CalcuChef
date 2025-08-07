@@ -74,7 +74,7 @@ CalcuChef/
 ## 🧩 Sesion 6 - Actualizacion de precios
 
 - Se añadio la opcion de actualizar el precio de un ingrediente desde la interfaz.
-  -Al cambiar el precio, todas las recetas que contiene dicho ingrediente se actualizan automaticamente:
+- Al cambiar el precio, todas las recetas que contiene dicho ingrediente se actualizan automaticamente:
 - Se recalcula su costo total.
 - Se ajusta el precio sugerido.
 - Se creo el archivo 'updater.py' para manejar estas operaciones de forma centralizada
@@ -87,3 +87,40 @@ CalcuChef/
   - Precio total sugerido
   - Ganancia estimada
 - Se creó el archivo `simulator.py` para manejar esta lógica.
+
+## 📊 Sesión 8 – Estadísticas visuales
+
+- Se creó una nueva ventana que muestra datos clave:
+  - Ingrediente más usado en recetas
+  - Receta más rentable
+  - Total invertido en ingredientes
+  - Gráfica de precios sugeridos por receta
+- Se agregó el archivo `stats.py` para manejar estadísticas.
+
+## 🔍 Sesión 9 – Búsqueda y Categorías
+
+- Se añadió funcionalidad de búsqueda por nombre de receta.
+- Se permite filtrar recetas por categoría.
+- Al agregar o editar recetas, ahora se incluye una categoría personalizada.
+- La categoría se muestra en la vista de detalles y lista general.
+
+## 🧩 Sesión Extra A - Mejora visual con ttkbootstrap
+
+- Se reemplazó el uso tradicional de tkinter y ttk por ttkbootstrap.
+- Se integró un tema moderno y profesional: "superhero" (puede cambiarse fácilmente por otro).
+- Se mejoraron todos los botones, etiquetas y cuadros de texto para usar estilos visuales de ttkbootstrap.
+- Se aplicaron colores, padding y espaciado inteligente para una mejor distribución visual.
+- Se agregaron mensajes más claros, encabezados estilizados y controles visuales mejorados.
+
+## 📘 Sesión Extra B - Inventario De Insumos
+`ui/recipes_window.py`
+- Se rediseñó la interfaz de la ventana de recetas:
+- Se agregó una barra de búsqueda por nombre usando tk.StringVar().
+- Se conectó dicha barra a un evento <KeyRelease> para actualizar en tiempo real el listado mostrado.
+- Se incorporó un Treeview para mostrar las recetas de forma más clara y estructurada.
+- Se eliminó la lista sin formato previa para reemplazarla por la tabla dinámica.
+- Se mejoró la experiencia visual con ttkbootstrap.
+
+## 🧩 Sesión Extra E – Exportación e Importación de Datos Generales en JSON
+- Botón “Exportar sistema”: Exporta todos los datos (ingredientes y recetas) a un archivo .json o .zip estructurado.
+- Botón “Importar sistema”: Permite al usuario cargar un archivo previamente exportado para restaurar todos los datos.
