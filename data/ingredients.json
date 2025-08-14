@@ -52,6 +52,139 @@
         "nombre": "Pollo",
         "precio": 50.0,
         "cantidad": 10.0,
+        "umbral": 10.0,
+        "umbral_minimo": 0.0
+    },
+    {
+        "nombre": "Arroz",
+        "precio": 15.0,
+        "cantidad": 3.0,
+        "umbral": 5.0
+    },
+    {
+        "nombre": "Pechuga de Pollo",
+        "precio": 25.0,
+        "cantidad": 2.0,
+        "umbral": 7.0
+    },
+    {
+        "nombre": "Chícharos",
+        "precio": 18.0,
+        "cantidad": 5.0,
+        "umbral": 5.0
+    },
+    {
+        "nombre": "Caldo de Pollo",
+        "precio": 14.0,
+        "cantidad": 5.0,
+        "umbral": 5.0
+    },
+    {
+        "nombre": "Tortilla de Harina",
+        "precio": 20.0,
+        "cantidad": 10.0,
+        "umbral": 10.0
+    },
+    {
+        "nombre": "Frijoles Refritos",
+        "precio": 20.0,
+        "cantidad": 12.0,
+        "umbral": 10.0
+    },
+    {
+        "nombre": "Queso Rallado",
+        "precio": 30.0,
+        "cantidad": 30.0,
+        "umbral": 20.0
+    },
+    {
+        "nombre": "Lechuga",
+        "precio": 23.0,
+        "cantidad": 10.0,
+        "umbral": 15.0
+    },
+    {
+        "nombre": "Salsa",
+        "precio": 14.0,
+        "cantidad": 9.0,
+        "umbral": 10.0
+    },
+    {
+        "nombre": "Crema",
+        "precio": 20.0,
+        "cantidad": 10.0,
+        "umbral": 10.0
+    },
+    {
+        "nombre": "Camarón Cocido",
+        "precio": 35.0,
+        "cantidad": 15.0,
+        "umbral": 10.0
+    },
+    {
+        "nombre": "Jitomate",
+        "precio": 15.0,
+        "cantidad": 25.0,
+        "umbral": 15.0
+    },
+    {
+        "nombre": "Cebolla Morada",
+        "precio": 7.0,
+        "cantidad": 17.0,
+        "umbral": 15.0
+    },
+    {
+        "nombre": "Cilantro",
+        "precio": 3.0,
+        "cantidad": 30.0,
+        "umbral": 10.0
+    },
+    {
+        "nombre": "Limon",
+        "precio": 6.0,
+        "cantidad": 15.0,
+        "umbral": 10.0
+    },
+    {
+        "nombre": "Aguacate",
+        "precio": 17.0,
+        "cantidad": 10.0,
+        "umbral": 15.0
+    },
+    {
+        "nombre": "Pan P/ Hamburguesa",
+        "precio": 50.0,
+        "cantidad": 10.0,
+        "umbral": 10.0
+    },
+    {
+        "nombre": "Carne De Res",
+        "precio": 50.0,
+        "cantidad": 20.0,
+        "umbral": 12.0
+    },
+    {
+        "nombre": "Queso Amarillo",
+        "precio": 2.0,
+        "cantidad": 30.0,
+        "umbral": 20.0
+    },
+    {
+        "nombre": "Mayonesa",
+        "precio": 22.0,
+        "cantidad": 10.0,
+        "umbral": 5.0
+    },
+    {
+        "nombre": "Mostaza",
+        "precio": 19.0,
+        "cantidad": 10.0,
+        "umbral": 5.0
+    },
+    {
+        "nombre": "Pepinillos",
+        "precio": 16.0,
+        "cantidad": 20.0,
         "umbral": 10.0
     }
 ]

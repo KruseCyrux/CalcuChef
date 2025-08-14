@@ -1,4 +1,5 @@
 # CalcuChef 🍽️🧮
+![CalcuChef Logo](assets/logo.jpeg)
 
 **CalcuChef** es una aplicación de escritorio hecha en Python, diseñada para ayudar a restaurantes y cocineros profesionales a calcular el costo total de sus recetas, basándose en precios de ingredientes, cantidades y márgenes de ganancia.
 
@@ -142,3 +143,10 @@ CalcuChef/
 - Interruptor en la Barra Superior.
 - Integración Completa.
 - Persistencia del Modo.
+
+## 📦 Sesión 10 - Generación de ejecutable de CalcuChef
+- Generación de ejecutable con PyInstaller
+- Inclusión de Recursos.
+- Compatibilidad con GUI.
+- Personalización del ejecutable.
+- Prueba & Distribución.
