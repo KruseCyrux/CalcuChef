@@ -136,3 +136,9 @@ CalcuChef/
 - Se añadieron mensajes claros de error con messagebox.showerror.
 - Se fortaleció la robustez frente a archivos inexistentes o dañados.
 - Se unificó el control de errores en las ventanas principales.
+
+## 🧩 Sesión Extra E - Modo Oscuro con Interruptor en la Barra Superior
+- Modo Oscuro & Claro.
+- Interruptor en la Barra Superior.
+- Integración Completa.
+- Persistencia del Modo.

@@ -6,10 +6,33 @@ from ui.stats_window import open_stats_window
 from ui.backup_window import open_backup_window  # ← Asegúrate de tener este archivo
 
 def launch_main_window():
-    root = ttk.Window(themename="flatly")
+    # Tema inicial (claro)
+    current_theme = {"name": "flatly"}  # Usamos un dict para que sea mutable
+    root = ttk.Window(themename=current_theme["name"])
     root.title("CalcuChef - Calculadora de Cotizaciones de Recetas")
-    root.state('zoomed')  # Inicia en modo pantalla completa
+    root.state('zoomed')
     root.resizable(True, True)
+
+    # Barra superior con switch de modo oscuro
+    top_bar = ttk.Frame(root, padding=10)
+    top_bar.pack(side="top", fill="x")
+
+    ttk.Label(top_bar, text="Modo Oscuro:", bootstyle="inverse").pack(side="left", padx=(0, 5))
+
+    def toggle_theme():
+        if current_theme["name"] == "flatly":  # Claro → Oscuro
+            root.style.theme_use("darkly")
+            current_theme["name"] = "darkly"
+        else:  # Oscuro → Claro
+            root.style.theme_use("flatly")
+            current_theme["name"] = "flatly"
+
+    theme_switch = ttk.Checkbutton(
+        top_bar,
+        bootstyle="round-toggle",
+        command=toggle_theme
+    )
+    theme_switch.pack(side="left")
 
     # Contenedor principal centrado
     main_frame = ttk.Frame(root, padding=30)
